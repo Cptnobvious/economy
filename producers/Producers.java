@@ -3,7 +3,7 @@ package economy.producers;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import economy.producers.Trader.BlockTrader;
+import economy.producers.trader.BlockTrader;
 
 public class Producers {
 

@@ -9,6 +9,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import economy.config.ConfigHandler;
+import economy.gui.GuiHandler;
 import economy.network.PacketHandler;
 import economy.producers.Producers;
 import economy.proxies.CommonProxy;
@@ -41,6 +42,7 @@ public class ModEconomy {
 		Resources.addNames();
 		Producers.addNames();
 		
+		new GuiHandler();
 	}
 	
 	@EventHandler
