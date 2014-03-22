@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import economy.ModEconomy;
+import economy.goods.books.GuiValueGuide;
 import economy.producers.trader.ContainerTrader;
 import economy.producers.trader.GuiTrader;
 import economy.producers.trader.TETrader;
@@ -16,6 +17,9 @@ public class GuiHandler implements IGuiHandler {
 		NetworkRegistry.instance().registerGuiHandler(ModEconomy.instance, this);
 	}
 
+	//Case 0:	Trader Gui
+	//Case 1:	Value Guide
+	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID){
@@ -33,12 +37,14 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID){
-		case 0:
-			TileEntity te = world.getBlockTileEntity(x, y, z);
-			if (te != null && te instanceof TETrader){
-				return new GuiTrader(player.inventory, (TETrader)te);
-			}
-			break;
+			case 0:
+				TileEntity te = world.getBlockTileEntity(x, y, z);
+				if (te != null && te instanceof TETrader){
+					return new GuiTrader(player.inventory, (TETrader)te);
+				}
+				break;
+			case 1:
+				return new GuiValueGuide();
 		}
 	
 		return null;

@@ -2,6 +2,7 @@ package economy.goods.books;
 
 import java.util.List;
 
+import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -12,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import economy.ModEconomy;
 import economy.goods.GoodsInfo;
 import economy.resources.ResourcesInfo;
 
@@ -47,7 +49,21 @@ public class ItemValueGuide extends Item {
 
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		/*
+		if (!world.isRemote) {
+			System.out.println("I got this far");
+			FMLNetworkHandler.openGui(player, ModEconomy.instance, 1, world, x, y, z);
+			return true;
+		}
+		
 		return false;
+		*/
+		
+		System.out.println("I got this far");
+		FMLNetworkHandler.openGui(player, ModEconomy.instance, 1, world, x, y, z);
+		return true;
+		
 	}
+	
 	
 }
