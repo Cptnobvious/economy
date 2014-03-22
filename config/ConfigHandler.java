@@ -17,6 +17,7 @@ public class ConfigHandler {
 		config.load();
 		
 		ResourcesInfo.PINKSTUFF_ID = config.getBlock(ResourcesInfo.PINKSTUFF_KEY, ResourcesInfo.PINKSTUFF_DEFAULT).getInt();
+		ResourcesInfo.CURRENCY_ID = config.getItem(ResourcesInfo.CURRENCY_KEY, ResourcesInfo.CURRENCY_DEFAULT).getInt() - 256;
 		
 		ProducersInfo.TRADER_ID = config.getBlock(ProducersInfo.TRADER_KEY, ProducersInfo.TRADER_DEFAULT).getInt();
 		

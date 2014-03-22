@@ -30,7 +30,6 @@ public class TETrader extends TileEntity implements IInventory {
 				decrStackSize(0, amount);
 				
 				stash = stash + getValue(id, amount);
-				System.out.println(stash);
 			}
 			
 		//}
@@ -44,10 +43,6 @@ public class TETrader extends TileEntity implements IInventory {
 			total = amount * Standards.PINKSTUFFORE_VALUE;
 		}
 		
-		System.out.println(id + " compared to " + ResourcesInfo.PINKSTUFF_ID);
-		System.out.println(amount);
-		System.out.println(total);
-		
 		return total;
 	}
 
@@ -56,7 +51,6 @@ public class TETrader extends TileEntity implements IInventory {
 	}
 	
 	public int getStash(){
-		System.out.println(this.stash);
 		return stash;
 	}
 	

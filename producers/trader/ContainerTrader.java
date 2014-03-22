@@ -1,7 +1,5 @@
 package economy.producers.trader;
 
-import java.util.Arrays;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -10,6 +8,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import economy.utility.SlotCurrency;
 import economy.utility.SlotResource;
 
 public class ContainerTrader extends Container{
@@ -36,8 +35,8 @@ public class ContainerTrader extends Container{
 		}*/
 		
 		addSlotToContainer(new SlotResource(trader, 0, 42, 67));
-		addSlotToContainer(new Slot(trader, 1, 108, 67));
-		addSlotToContainer(new Slot(trader, 2, 128, 67));
+		addSlotToContainer(new SlotCurrency(trader, 1, 108, 67));
+		addSlotToContainer(new SlotCurrency(trader, 2, 128, 67));
 		
 	}
 	
