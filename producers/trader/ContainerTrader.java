@@ -16,13 +16,13 @@ public class ContainerTrader extends Container{
 		
 		//Adds the hotbar
 		for (int x = 0; x < 9; x++){
-			addSlotToContainer(new Slot(invPlayer, x, 5 + (19 * x), 157));
+			addSlotToContainer(new Slot(invPlayer, x, 5 + (19 * x), 155));
 		}
 		
 		//Adds the inventory
 		for (int y = 0; y < 3; y++){
 			for (int x = 0; x < 9; x++){
-				addSlotToContainer(new Slot(invPlayer, x + (y * 9) + 9, 5 + 19 * x, 95 + y * 19));
+				addSlotToContainer(new Slot(invPlayer, x + (y * 9) + 9, 5 + (19 * x), 91 + (y * 19)));
 			}
 		}
 		

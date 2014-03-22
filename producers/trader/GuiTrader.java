@@ -21,7 +21,7 @@ public class GuiTrader extends GuiContainer {
 
 		this.trader = te;
 		
-		xSize = 177;
+		xSize = 186;
 		ySize = 177;
 	}
 
