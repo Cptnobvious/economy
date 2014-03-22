@@ -41,6 +41,8 @@ public class TETrader extends TileEntity implements IInventory {
 		
 		if (id == ResourcesInfo.PINKSTUFF_ID){
 			total = amount * Standards.PINKSTUFFORE_VALUE;
+		} else if (id == ResourcesInfo.CURRENCY_ID +256){
+			total = amount * Standards.CURRENCY_VALUE;
 		}
 		
 		return total;
@@ -194,9 +196,9 @@ public class TETrader extends TileEntity implements IInventory {
 		if (getStash() >= 1){
 			ItemStack stack = new ItemStack(ResourcesInfo.CURRENCY_ID + 256, 1, 0);
 			setStash(getStash() - 1);
-			if (getStackInSlot(1) != null){
+			if (getStackInSlot(1) != null && getStackInSlot(1).itemID == ResourcesInfo.CURRENCY_ID + 256){
 				stack = getStackInSlot(1);
-				if (stack.stackSize <64) {
+				if (stack.stackSize < 64) {
 					stack.stackSize = stack.stackSize + 1;
 					setInventorySlotContents(1, stack);
 				}

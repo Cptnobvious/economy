@@ -9,6 +9,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import economy.config.ConfigHandler;
+import economy.goods.Goods;
 import economy.gui.GuiHandler;
 import economy.network.PacketHandler;
 import economy.producers.Producers;
@@ -31,6 +32,7 @@ public class ModEconomy {
 		
 		Resources.init();
 		Producers.init();
+		Goods.init();
 		
 		proxy.initSounds();
 		proxy.initRenderers();
@@ -41,6 +43,7 @@ public class ModEconomy {
 	public void load(FMLInitializationEvent event){
 		Resources.addNames();
 		Producers.addNames();
+		Goods.addNames();
 		
 		Producers.registerTileEntities();
 		
