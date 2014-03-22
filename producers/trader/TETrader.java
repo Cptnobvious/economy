@@ -5,16 +5,60 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+import com.google.common.reflect.ClassPath.ResourceInfo;
+
+import economy.resources.ResourcesInfo;
+import economy.standards.Standards;
+
 public class TETrader extends TileEntity implements IInventory {
 
 	private ItemStack[] contents;
-	private float currency;
+	private double stash;
 	
 	public TETrader(){
 		contents = new ItemStack[3];
-		currency = 0;
+		stash = 0;
 	}
 	
+	@Override
+	public void updateEntity(){
+		if (!worldObj.isRemote){
+			if (getStackInSlot(0) != null){
+				ItemStack stack = getStackInSlot(0);
+				int amount = stack.stackSize;
+				int id = stack.itemID;
+				
+				decrStackSize(0, amount);
+				
+				stash = stash + getValue(id, amount);
+				System.out.println(stash);
+			}
+			
+		}
+		
+	}
+	
+	private double getValue(int id, int amount){
+		double total = 0;
+		
+		if (id == ResourcesInfo.PINKSTUFF_ID){
+			total = amount * Standards.PINKSTUFFORE_VALUE;
+		}
+		
+		System.out.println(id + " compared to " + ResourcesInfo.PINKSTUFF_ID);
+		System.out.println(amount);
+		System.out.println(total);
+		
+		return total;
+	}
+
+	public void setStash(double a){
+		stash = a;
+	}
+	
+	public double getStash(){
+		return stash;
+	}
 	
 	@Override
 	public int getSizeInventory() {

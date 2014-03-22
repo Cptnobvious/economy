@@ -1,11 +1,11 @@
 package economy.producers.trader;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import economy.utility.SlotResource;
 
 public class ContainerTrader extends Container{
 
@@ -29,6 +29,11 @@ public class ContainerTrader extends Container{
 		/*for (int x = 0; x < 3; x++){
 			addSlotToContainer(new Slot(trader, x, 8 + 18 * x, 17));
 		}*/
+		
+		addSlotToContainer(new SlotResource(trader, 0, 42, 67));
+		addSlotToContainer(new Slot(trader, 1, 108, 67));
+		addSlotToContainer(new Slot(trader, 2, 128, 67));
+		
 	}
 	
 	
