@@ -180,5 +180,30 @@ public class TETrader extends TileEntity implements IInventory {
 		
 		setStash(compound.getInteger("Stash"));
 	}
+
+	public void recieveButtonEvent(byte id) {
+		switch (id){
+			case 0:
+				withdrawOne();
+				break;
+		}
+	}
+
+	private void withdrawOne() {
+
+		if (getStash() >= 1){
+			ItemStack stack = new ItemStack(ResourcesInfo.CURRENCY_ID + 256, 1, 0);
+			setStash(getStash() - 1);
+			if (getStackInSlot(1) != null){
+				stack = getStackInSlot(1);
+				if (stack.stackSize <64) {
+					stack.stackSize = stack.stackSize + 1;
+					setInventorySlotContents(1, stack);
+				}
+			} else {
+				setInventorySlotContents(1, stack);
+			}
+		}
+	}
 	
 }

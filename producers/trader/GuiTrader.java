@@ -3,6 +3,7 @@ package economy.producers.trader;
 import java.text.DecimalFormat;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -12,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import economy.network.PacketHandler;
 import economy.resources.Resources;
 import economy.standards.Standards;
 
@@ -63,5 +65,14 @@ public class GuiTrader extends GuiContainer {
 	@Override
 	public void initGui(){
 		super.initGui();
+		buttonList.clear();
+		GuiButton withdrawMax = new GuiButton(0, guiLeft + 130, guiTop + 20, 40, 20, "1");
+		withdrawMax.enabled = true;
+		buttonList.add(withdrawMax);
+	}
+	
+	@Override
+	protected void actionPerformed(GuiButton button){
+		PacketHandler.sendTraderPacket((byte)button.id);
 	}
 }

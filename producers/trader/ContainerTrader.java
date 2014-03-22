@@ -106,4 +106,8 @@ public class ContainerTrader extends Container{
 		
 	}
 	
+	public TETrader getTrader(){
+		return trader;
+	}
+	
 }
