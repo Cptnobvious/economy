@@ -49,8 +49,19 @@ public class GuiTrader extends GuiContainer {
 		fontRenderer.drawString(str, 28, 18, 0x000000);
 		
 		
-		str = "$";
+		TETrader current = (TETrader)trader.worldObj.getBlockTileEntity(trader.xCoord, trader.yCoord, trader.zCoord);
+		
+		//int stash = current.getStash();
+		
+		//System.out.println(current.getStash());
+		
+		str = "$" + trader.getStash();
 		fontRenderer.drawString(str, 126, 10, 0x000000);
 		
+	}
+	
+	@Override
+	public void initGui(){
+		super.initGui();
 	}
 }

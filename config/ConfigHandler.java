@@ -21,7 +21,7 @@ public class ConfigHandler {
 		ProducersInfo.TRADER_ID = config.getBlock(ProducersInfo.TRADER_KEY, ProducersInfo.TRADER_DEFAULT).getInt();
 		
 		//Load standards
-		Standards.PINKSTUFFORE_VALUE = config.get("Standards", "Pinkstuff Ore Value", Standards.PINKSTUFFORE_VALUE_DEFAULT).getDouble(Standards.PINKSTUFFORE_VALUE_DEFAULT);
+		Standards.PINKSTUFFORE_VALUE = config.get("Standards", "Pinkstuff Ore Value", Standards.PINKSTUFFORE_VALUE_DEFAULT).getInt();
 		
 		config.save();
 	}

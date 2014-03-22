@@ -6,6 +6,7 @@ public class ProducersInfo {
 	
 	public static int TRADER_ID;
 	public static final String TRADER_KEY = "Trader";
+	public static final String TRADER_TE_KEY = "TETrader";
 	public static final int TRADER_DEFAULT = 2101;
 	public static final String TRADER_UNLOCALIZED_NAME = "trader";
 	public static final String TRADER_NAME = "Trades & Exchange";

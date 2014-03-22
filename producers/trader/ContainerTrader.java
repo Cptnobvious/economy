@@ -1,10 +1,15 @@
 package economy.producers.trader;
 
+import java.util.Arrays;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import economy.utility.SlotResource;
 
 public class ContainerTrader extends Container{
@@ -70,6 +75,36 @@ public class ContainerTrader extends Container{
 		}*/
 		
 		return null;
+	}
+	
+	@Override
+	public void addCraftingToCrafters(ICrafting player){
+		super.addCraftingToCrafters(player);
+		
+		player.sendProgressBarUpdate(this, 0, trader.getStash());
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int id, int data){
+		switch (id){
+			case 0:
+				trader.setStash(data);
+		}
+	}
+	
+	private int oldStash = 0;
+	
+	@Override
+	public void detectAndSendChanges(){
+		super.detectAndSendChanges();
+		
+		for (Object player : crafters){
+			if (trader.getStash() != oldStash){
+				((ICrafting)player).sendProgressBarUpdate(this, 0, trader.getStash());
+			}
+		}
+		
 	}
 	
 }

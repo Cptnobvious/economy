@@ -42,6 +42,8 @@ public class ModEconomy {
 		Resources.addNames();
 		Producers.addNames();
 		
+		Producers.registerTileEntities();
+		
 		new GuiHandler();
 	}
 	

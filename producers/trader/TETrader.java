@@ -3,17 +3,16 @@ package economy.producers.trader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-
-import com.google.common.reflect.ClassPath.ResourceInfo;
-
 import economy.resources.ResourcesInfo;
 import economy.standards.Standards;
 
 public class TETrader extends TileEntity implements IInventory {
 
 	private ItemStack[] contents;
-	private double stash;
+	private int stash;
 	
 	public TETrader(){
 		contents = new ItemStack[3];
@@ -22,7 +21,7 @@ public class TETrader extends TileEntity implements IInventory {
 	
 	@Override
 	public void updateEntity(){
-		if (!worldObj.isRemote){
+		//if (!worldObj.isRemote){
 			if (getStackInSlot(0) != null){
 				ItemStack stack = getStackInSlot(0);
 				int amount = stack.stackSize;
@@ -34,12 +33,12 @@ public class TETrader extends TileEntity implements IInventory {
 				System.out.println(stash);
 			}
 			
-		}
+		//}
 		
 	}
 	
-	private double getValue(int id, int amount){
-		double total = 0;
+	private int getValue(int id, int amount){
+		int total = 0;
 		
 		if (id == ResourcesInfo.PINKSTUFF_ID){
 			total = amount * Standards.PINKSTUFFORE_VALUE;
@@ -52,11 +51,12 @@ public class TETrader extends TileEntity implements IInventory {
 		return total;
 	}
 
-	public void setStash(double a){
+	public void setStash(int a){
 		stash = a;
 	}
 	
-	public double getStash(){
+	public int getStash(){
+		System.out.println(this.stash);
 		return stash;
 	}
 	
@@ -146,4 +146,45 @@ public class TETrader extends TileEntity implements IInventory {
 		return false;
 	}
 
+	@Override
+	public void writeToNBT(NBTTagCompound compound){
+		super.writeToNBT(compound);
+		
+		NBTTagList items = new NBTTagList();
+		
+		for (int i = 0; i < getSizeInventory(); i++){
+			ItemStack stack = getStackInSlot(i);
+			
+			if (stack != null){
+				NBTTagCompound item = new NBTTagCompound();
+				item.setByte("Slot", (byte)i);
+				//Then use the stack's own nbt function
+				stack.writeToNBT(item);
+				items.appendTag(item);
+			}
+		}
+		
+		compound.setTag("Items", items);
+		
+		compound.setInteger("Stash", stash);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound compound){
+		super.readFromNBT(compound);
+		
+		NBTTagList items = compound.getTagList("Items");
+		
+		for (int i = 0; i < items.tagCount(); i++){
+			NBTTagCompound item = (NBTTagCompound)items.tagAt(i);
+			int slot = item.getByte("Slot");
+			if (slot >= 0 && slot < getSizeInventory()){
+				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
+			}
+		}
+		
+		
+		setStash(compound.getInteger("Stash"));
+	}
+	
 }
