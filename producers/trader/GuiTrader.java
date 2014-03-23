@@ -21,7 +21,9 @@ import economy.standards.Standards;
 public class GuiTrader extends GuiContainer {
 	
 	private TETrader trader;
+	private int layer;
 	private static final ResourceLocation texture = new ResourceLocation("economy", "textures/gui/tradergui.png");
+	//private static final ResourceLocation shopTexture = new ResourceLocation
 
 	public GuiTrader(InventoryPlayer invplayer, TETrader te) {
 		super(new ContainerTrader(invplayer, te));
@@ -51,12 +53,6 @@ public class GuiTrader extends GuiContainer {
 		fontRenderer.drawString(str, 28, 18, 0x000000);
 		
 		
-		TETrader current = (TETrader)trader.worldObj.getBlockTileEntity(trader.xCoord, trader.yCoord, trader.zCoord);
-		
-		//int stash = current.getStash();
-		
-		//System.out.println(current.getStash());
-		
 		str = "$" + trader.getStash();
 		fontRenderer.drawString(str, 126, 10, 0x000000);
 		
@@ -66,13 +62,20 @@ public class GuiTrader extends GuiContainer {
 	public void initGui(){
 		super.initGui();
 		buttonList.clear();
-		GuiButton withdrawMax = new GuiButton(0, guiLeft + 130, guiTop + 20, 40, 20, "1");
-		withdrawMax.enabled = true;
-		buttonList.add(withdrawMax);
+		
+		GuiButton withdrawOne = new GuiButton(0, guiLeft + 107, guiTop + 46, 40, 20, "1");
+		withdrawOne.enabled = true;
+		buttonList.add(withdrawOne);
+		
+		GuiButton buyValueGuide = new GuiButton(1, guiLeft + 80, guiTop + 10, 40, 20, "Value Guide - 25");
+		buyValueGuide.enabled = true;
+		buttonList.add(buyValueGuide);
+		
 	}
 	
 	@Override
 	protected void actionPerformed(GuiButton button){
+		PacketHandler.sendTraderPacket((byte)button.id);
 		PacketHandler.sendTraderPacket((byte)button.id);
 	}
 }

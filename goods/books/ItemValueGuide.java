@@ -49,20 +49,8 @@ public class ItemValueGuide extends Item {
 
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		/*
-		if (!world.isRemote) {
-			System.out.println("I got this far");
-			FMLNetworkHandler.openGui(player, ModEconomy.instance, 1, world, x, y, z);
-			return true;
-		}
-		
-		return false;
-		*/
-		
-		System.out.println("I got this far");
 		FMLNetworkHandler.openGui(player, ModEconomy.instance, 1, world, x, y, z);
 		return true;
-		
 	}
 	
 	

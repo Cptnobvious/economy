@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import economy.utility.SlotCurrency;
+import economy.utility.SlotOutput;
 import economy.utility.SlotResource;
 
 public class ContainerTrader extends Container{
@@ -36,7 +37,7 @@ public class ContainerTrader extends Container{
 		
 		addSlotToContainer(new SlotResource(trader, 0, 42, 67));
 		addSlotToContainer(new SlotCurrency(trader, 1, 108, 67));
-		addSlotToContainer(new SlotCurrency(trader, 2, 128, 67));
+		addSlotToContainer(new SlotOutput(trader, 2, 128, 67));
 		
 	}
 	

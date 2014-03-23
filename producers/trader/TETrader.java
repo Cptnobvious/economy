@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import economy.goods.GoodsInfo;
 import economy.resources.ResourcesInfo;
 import economy.standards.Standards;
 
@@ -188,6 +189,17 @@ public class TETrader extends TileEntity implements IInventory {
 			case 0:
 				withdrawOne();
 				break;
+			case 1:
+				buyValueGuide();
+				break;
+		}
+	}
+
+	private void buyValueGuide() {
+		if (getStash() >= 25 && getStackInSlot(2) == null){
+			ItemStack stack = new ItemStack(GoodsInfo.VALUEGUIDE_ID + 256, 1, 0);
+			setInventorySlotContents(2, stack);
+			setStash(getStash() - 25);
 		}
 	}
 
