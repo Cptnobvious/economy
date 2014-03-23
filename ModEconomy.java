@@ -47,6 +47,8 @@ public class ModEconomy {
 		
 		Producers.registerTileEntities();
 		
+		Producers.registerRecipes();
+		
 		new GuiHandler();
 	}
 	
