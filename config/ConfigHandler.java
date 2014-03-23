@@ -17,12 +17,27 @@ public class ConfigHandler {
 		
 		config.load();
 		
+		/* Defaults
+		 * Items:
+		 * 24201 - Currency
+		 * 24202 - Value Guide
+		 * 
+		 * Blocks:
+		 * 2100 - Pinkstuff Ore
+		 * 2101 - Trader
+		 * 2102 - Town Hall
+		 * 2103 - Hut
+		 * 
+		 */
+		
 		//Load resources
 		ResourcesInfo.PINKSTUFF_ID = config.getBlock(ResourcesInfo.PINKSTUFF_KEY, ResourcesInfo.PINKSTUFF_DEFAULT).getInt();
 		ResourcesInfo.CURRENCY_ID = config.getItem(ResourcesInfo.CURRENCY_KEY, ResourcesInfo.CURRENCY_DEFAULT).getInt() - 256;
 		
 		//Load producers
 		ProducersInfo.TRADER_ID = config.getBlock(ProducersInfo.TRADER_KEY, ProducersInfo.TRADER_DEFAULT).getInt();
+		ProducersInfo.TOWNHALL_ID = config.getBlock(ProducersInfo.TOWNHALL_KEY, ProducersInfo.TOWNHALL_DEFAULT).getInt();
+		ProducersInfo.HUT_ID = config.getBlock(ProducersInfo.HUT_KEY, ProducersInfo.HUT_DEFAULT).getInt();
 		
 		//Load standards
 		Standards.PINKSTUFFORE_VALUE = config.get("Standards", "Pinkstuff Ore Value", Standards.PINKSTUFFORE_VALUE_DEFAULT).getInt();
