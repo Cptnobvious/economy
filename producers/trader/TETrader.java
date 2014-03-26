@@ -42,8 +42,10 @@ public class TETrader extends TileEntity implements IInventory {
 		
 		if (id == ResourcesInfo.PINKSTUFF_ID){
 			total = amount * Standards.PINKSTUFFORE_VALUE;
-		} else if (id == ResourcesInfo.GOLDCOIN_ID +256){
+		} else if (id == ResourcesInfo.GOLDCOIN_ID + 256){
 			total = amount * Standards.GOLDCOIN_VALUE;
+		} else if (id == ResourcesInfo.COPPERCOIN_ID + 256){
+			total = amount * Standards.COPPERCOIN_VALUE;
 		}
 		
 		return total;
@@ -209,10 +211,8 @@ public class TETrader extends TileEntity implements IInventory {
 			if (getStash() >= 1){
 				ItemStack stack = new ItemStack(ResourcesInfo.COPPERCOIN_ID + 256, 1, 0);
 				if(getStackInSlot(1) == null){
-					System.out.println("Empty slot");
 					setInventorySlotContents(1, stack);
 				} else if (getStackInSlot(1).itemID == ResourcesInfo.COPPERCOIN_ID + 256 && getStackInSlot(1).stackSize < 64){
-					System.out.println("Already in slot");
 					stack.stackSize = getStackInSlot(1).stackSize + 1;
 					setInventorySlotContents(1, stack);
 				}

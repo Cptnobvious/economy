@@ -93,7 +93,7 @@ public class ContainerTrader extends Container{
 		}
 	}
 	
-	private int oldStash = 0;
+	private int oldStash = -1;
 	
 	@Override
 	public void detectAndSendChanges(){
