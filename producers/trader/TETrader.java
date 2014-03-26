@@ -22,7 +22,7 @@ public class TETrader extends TileEntity implements IInventory {
 	
 	@Override
 	public void updateEntity(){
-		//if (!worldObj.isRemote){
+		if (!worldObj.isRemote){
 			if (getStackInSlot(0) != null){
 				ItemStack stack = getStackInSlot(0);
 				int amount = stack.stackSize;
@@ -33,7 +33,7 @@ public class TETrader extends TileEntity implements IInventory {
 				stash = stash + getValue(id, amount);
 			}
 			
-		//}
+		}
 		
 	}
 	
@@ -205,19 +205,22 @@ public class TETrader extends TileEntity implements IInventory {
 
 	private void withdrawOne() {
 
-		if (getStash() >= 1){
-			ItemStack stack = new ItemStack(ResourcesInfo.GOLDCOIN_ID + 256, 1, 0);
-			setStash(getStash() - 1);
-			if (getStackInSlot(1) != null && getStackInSlot(1).itemID == ResourcesInfo.GOLDCOIN_ID + 256){
-				stack = getStackInSlot(1);
-				if (stack.stackSize < 64) {
-					stack.stackSize = stack.stackSize + 1;
+		if (!worldObj.isRemote){
+			if (getStash() >= 1){
+				ItemStack stack = new ItemStack(ResourcesInfo.COPPERCOIN_ID + 256, 1, 0);
+				if(getStackInSlot(1) == null){
+					System.out.println("Empty slot");
+					setInventorySlotContents(1, stack);
+				} else if (getStackInSlot(1).itemID == ResourcesInfo.COPPERCOIN_ID + 256 && getStackInSlot(1).stackSize < 64){
+					System.out.println("Already in slot");
+					stack.stackSize = getStackInSlot(1).stackSize + 1;
 					setInventorySlotContents(1, stack);
 				}
-			} else {
-				setInventorySlotContents(1, stack);
+				
+				setStash(getStash() - 1);
 			}
 		}
+		
 	}
 	
 }

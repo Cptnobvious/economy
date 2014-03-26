@@ -76,6 +76,6 @@ public class GuiTrader extends GuiContainer {
 	@Override
 	protected void actionPerformed(GuiButton button){
 		PacketHandler.sendTraderPacket((byte)button.id);
-		PacketHandler.sendTraderPacket((byte)button.id);
+		//PacketHandler.sendTraderPacket((byte)button.id);
 	}
 }

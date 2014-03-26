@@ -17,6 +17,7 @@ public class SlotCurrency extends Slot {
 		int id = stack.itemID;
 		
 		if (id == ResourcesInfo.GOLDCOIN_ID + 256) {acceptable = true;}
+		if (id == ResourcesInfo.COPPERCOIN_ID + 256) {acceptable = true;}
 		
 		return acceptable;
 	}

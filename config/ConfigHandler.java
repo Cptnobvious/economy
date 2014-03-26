@@ -21,6 +21,7 @@ public class ConfigHandler {
 		 * Items:
 		 * 24201 - Gold Coin
 		 * 24202 - Value Guide
+		 * 24203 - Copper Coin
 		 * 
 		 * Blocks:
 		 * 2100 - Pinkstuff Ore
@@ -33,6 +34,7 @@ public class ConfigHandler {
 		//Load resources
 		ResourcesInfo.PINKSTUFF_ID = config.getBlock(ResourcesInfo.PINKSTUFF_KEY, ResourcesInfo.PINKSTUFF_DEFAULT).getInt();
 		ResourcesInfo.GOLDCOIN_ID = config.getItem(ResourcesInfo.GOLDCOIN_KEY, ResourcesInfo.GOLDCOIN_DEFAULT).getInt() - 256;
+		ResourcesInfo.COPPERCOIN_ID = config.getItem(ResourcesInfo.COPPERCOIN_KEY, ResourcesInfo.COPPERCOIN_DEFAULT).getInt() - 256;
 		
 		//Load producers
 		ProducersInfo.TRADER_ID = config.getBlock(ProducersInfo.TRADER_KEY, ProducersInfo.TRADER_DEFAULT).getInt();
