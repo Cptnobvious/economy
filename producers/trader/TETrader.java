@@ -42,8 +42,8 @@ public class TETrader extends TileEntity implements IInventory {
 		
 		if (id == ResourcesInfo.PINKSTUFF_ID){
 			total = amount * Standards.PINKSTUFFORE_VALUE;
-		} else if (id == ResourcesInfo.CURRENCY_ID +256){
-			total = amount * Standards.CURRENCY_VALUE;
+		} else if (id == ResourcesInfo.GOLDCOIN_ID +256){
+			total = amount * Standards.GOLDCOIN_VALUE;
 		}
 		
 		return total;
@@ -206,9 +206,9 @@ public class TETrader extends TileEntity implements IInventory {
 	private void withdrawOne() {
 
 		if (getStash() >= 1){
-			ItemStack stack = new ItemStack(ResourcesInfo.CURRENCY_ID + 256, 1, 0);
+			ItemStack stack = new ItemStack(ResourcesInfo.GOLDCOIN_ID + 256, 1, 0);
 			setStash(getStash() - 1);
-			if (getStackInSlot(1) != null && getStackInSlot(1).itemID == ResourcesInfo.CURRENCY_ID + 256){
+			if (getStackInSlot(1) != null && getStackInSlot(1).itemID == ResourcesInfo.GOLDCOIN_ID + 256){
 				stack = getStackInSlot(1);
 				if (stack.stackSize < 64) {
 					stack.stackSize = stack.stackSize + 1;

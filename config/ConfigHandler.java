@@ -19,7 +19,7 @@ public class ConfigHandler {
 		
 		/* Defaults
 		 * Items:
-		 * 24201 - Currency
+		 * 24201 - Gold Coin
 		 * 24202 - Value Guide
 		 * 
 		 * Blocks:
@@ -32,7 +32,7 @@ public class ConfigHandler {
 		
 		//Load resources
 		ResourcesInfo.PINKSTUFF_ID = config.getBlock(ResourcesInfo.PINKSTUFF_KEY, ResourcesInfo.PINKSTUFF_DEFAULT).getInt();
-		ResourcesInfo.CURRENCY_ID = config.getItem(ResourcesInfo.CURRENCY_KEY, ResourcesInfo.CURRENCY_DEFAULT).getInt() - 256;
+		ResourcesInfo.GOLDCOIN_ID = config.getItem(ResourcesInfo.GOLDCOIN_KEY, ResourcesInfo.GOLDCOIN_DEFAULT).getInt() - 256;
 		
 		//Load producers
 		ProducersInfo.TRADER_ID = config.getBlock(ProducersInfo.TRADER_KEY, ProducersInfo.TRADER_DEFAULT).getInt();

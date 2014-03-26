@@ -13,13 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class ItemCurrency extends Item {
+public class ItemGoldCoin extends Item {
 
-	public ItemCurrency(int id) {
+	public ItemGoldCoin(int id) {
 		super(id);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setMaxStackSize(64);
-		setUnlocalizedName(ResourcesInfo.CURRENCY_UNLOCALIZED_NAME);
+		setUnlocalizedName(ResourcesInfo.GOLDCOIN_UNLOCALIZED_NAME);
 	}
 
 
@@ -33,14 +33,14 @@ public class ItemCurrency extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister register) {
-		itemIcon = register.registerIcon(ResourcesInfo.TEXTURE_LOCATION + ":" + ResourcesInfo.CURRENCY_ICON);
+		itemIcon = register.registerIcon(ResourcesInfo.TEXTURE_LOCATION + ":" + ResourcesInfo.GOLDCOIN_ICON);
 	}
 
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List info, boolean useExtraInformation) {
-		//info.add("This fun thing has been used " + itemstack.getItemDamage() + " times");
+		info.add("64 CC");
 	}
 
 	@Override

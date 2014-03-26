@@ -9,19 +9,19 @@ public class Resources {
 	
 	public static Block pinkStuff;
 	
-	public static Item currency;
+	public static Item goldCoin;
 	
 	public static void init(){
 		pinkStuff = new BlockPinkStuff(ResourcesInfo.PINKSTUFF_ID);
 		GameRegistry.registerBlock(pinkStuff, ResourcesInfo.PINKSTUFF_KEY);
 		
-		currency = new ItemCurrency(ResourcesInfo.CURRENCY_ID);
+		goldCoin = new ItemGoldCoin(ResourcesInfo.GOLDCOIN_ID);
 	}
 	
 	public static void addNames(){
 		LanguageRegistry.addName(pinkStuff, ResourcesInfo.PINKSTUFF_NAME);
 		
-		LanguageRegistry.addName(currency, ResourcesInfo.CURRENCY_NAME);
+		LanguageRegistry.addName(goldCoin, ResourcesInfo.GOLDCOIN_NAME);
 	}
 	
 }
