@@ -54,7 +54,7 @@ public class BlockTrader extends BlockContainer {
 		}
 	
 		return true;
-	};
+	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {

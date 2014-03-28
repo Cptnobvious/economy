@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import economy.producers.hut.BlockHut;
 import economy.producers.townhall.BlockTownHall;
+import economy.producers.townhall.TETownHall;
 import economy.producers.trader.BlockTrader;
 import economy.producers.trader.TETrader;
 
@@ -45,5 +46,6 @@ public class Producers {
 	
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(TETrader.class, ProducersInfo.TRADER_TE_KEY);
+		GameRegistry.registerTileEntity(TETownHall.class, ProducersInfo.TOWNHALL_TE_KEY);
 	}
 }

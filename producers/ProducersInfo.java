@@ -15,6 +15,7 @@ public class ProducersInfo {
 	
 	public static int TOWNHALL_ID;
 	public static final String TOWNHALL_KEY = "Townhall";
+	public static final String TOWNHALL_TE_KEY = "TETownhall";
 	public static final int TOWNHALL_DEFAULT = 2102;
 	public static final String TOWNHALL_UNLOCALIZED_NAME = "townhall";
 	public static final String TOWNHALL_NAME = "Town Hall";
@@ -26,5 +27,7 @@ public class ProducersInfo {
 	public static final String HUT_UNLOCALIZED_NAME = "hut";
 	public static final String HUT_NAME = "Hut";
 	public static final String HUT_TEXTURE = "hut";
+
+	
 	
 }
